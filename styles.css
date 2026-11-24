@@ -1,0 +1,443 @@
+
+:root {
+    --pink: #e9aab9;
+    --pink-dark: #c87891;
+    --pink-light: #f8e9ed;
+    --cream: #fffaf7;
+    --text: #493b40;
+    --muted: #927e84;
+    --white: #ffffff;
+    --shadow: 0 12px 35px rgba(113, 65, 81, 0.10);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 10% 10%, #fbe9ed 0, transparent 28%),
+        radial-gradient(circle at 90% 35%, #f8e8e0 0, transparent 25%),
+        var(--cream);
+    min-height: 100vh;
+}
+
+button {
+    font: inherit;
+}
+
+.hero {
+    text-align: center;
+    padding: 85px 20px 55px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.eyebrow {
+    color: var(--pink-dark);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(3.5rem, 10vw, 6.5rem);
+    font-weight: 600;
+    margin: 15px 0;
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    color: var(--pink-dark);
+}
+
+.subtitle {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.intro {
+    max-width: 560px;
+    margin: auto;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+.hero-decoration {
+    margin-top: 30px;
+    color: var(--pink-dark);
+    font-size: 1.2rem;
+}
+
+.calendar-section {
+    max-width: 1050px;
+    padding: 35px 22px 60px;
+    margin: auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.section-heading h2,
+.countdown-card h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.8rem, 5vw, 2.7rem);
+    font-weight: 600;
+    margin: 12px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.day-card {
+    position: relative;
+    min-height: 150px;
+    border: 1px solid #f0d6dd;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow);
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+.day-card:hover:not(:disabled) {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(113, 65, 81, 0.17);
+}
+
+.day-card:focus-visible,
+.preview-button:focus-visible,
+.close-modal:focus-visible {
+    outline: 3px solid var(--pink-dark);
+    outline-offset: 4px;
+}
+
+.day-number {
+    font-family: "Playfair Display", serif;
+    font-size: 2.8rem;
+    color: var(--pink-dark);
+}
+
+.day-label {
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.day-icon {
+    font-size: 1.15rem;
+}
+
+.day-card.locked {
+    background: #f7eef0;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.day-card.locked .day-number {
+    color: #bda7ad;
+}
+
+.day-card.available {
+    background: linear-gradient(145deg, #fff, #fbe9ed);
+}
+
+.day-card.opened {
+    border: 2px solid var(--pink);
+}
+
+.day-card.opened::after {
+    content: "♡";
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    color: var(--pink-dark);
+    font-size: 1rem;
+}
+
+.calendar-message {
+    text-align: center;
+    color: var(--muted);
+    margin-top: 25px;
+    min-height: 24px;
+    font-size: 0.9rem;
+}
+
+.countdown-section {
+    padding: 20px 22px 75px;
+}
+
+.countdown-card {
+    max-width: 750px;
+    margin: auto;
+    padding: 45px 25px;
+    text-align: center;
+    background: linear-gradient(135deg, #f9e6eb, #fff3ed);
+    border: 1px solid #f0d6dd;
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+}
+
+.countdown-card > p {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: clamp(12px, 4vw, 35px);
+    margin: 30px 0;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 55px;
+}
+
+.time-unit strong {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2rem, 7vw, 3.4rem);
+    color: var(--pink-dark);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.time-unit span {
+    color: var(--muted);
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.countdown-card .countdown-footer {
+    color: var(--pink-dark);
+    font-weight: 600;
+}
+
+.preview-section {
+    text-align: center;
+    padding: 0 20px 65px;
+}
+
+.preview-button {
+    border: none;
+    border-radius: 30px;
+    padding: 13px 25px;
+    background: var(--pink-dark);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.preview-button:hover {
+    background: #b96882;
+    transform: translateY(-2px);
+}
+
+.preview-section p {
+    margin-top: 13px;
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    border-top: 1px solid #f0dce1;
+    color: var(--muted);
+}
+
+footer p {
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+footer span {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+}
+
+/* Ventana emergente */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+}
+
+.modal.visible {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(49, 34, 40, 0.65);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 620px);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--cream);
+    border-radius: 24px;
+    padding: 38px 30px 30px;
+    text-align: center;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.2);
+    animation: appear 0.25s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 17px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal-day {
+    color: var(--pink-dark);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.modal-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    margin: 10px 0 20px;
+}
+
+.modal-images {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0 auto 22px;
+}
+
+.modal-images img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: contain;
+    border-radius: 14px;
+    background: #f5e9e9;
+}
+
+.modal-images.single-image {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.modal-images.single-image img {
+    max-height: 420px;
+}
+
+.modal-comment {
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 0.98rem;
+    white-space: pre-line;
+}
+
+.modal-heart {
+    display: inline-block;
+    color: var(--pink-dark);
+    font-size: 1.6rem;
+    margin-top: 17px;
+}
+
+@media (max-width: 650px) {
+    .hero {
+        padding-top: 60px;
+    }
+
+    .calendar {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 11px;
+    }
+
+    .day-card {
+        min-height: 120px;
+        border-radius: 14px;
+    }
+
+    .day-number {
+        font-size: 2.3rem;
+    }
+
+    .day-label {
+        font-size: 0.6rem;
+    }
+
+    .countdown-card {
+        padding: 35px 12px;
+    }
+
+    .modal-content {
+        padding: 38px 18px 25px;
+    }
+
+    .modal-images {
+        gap: 7px;
+    }
+}
+
+@media (max-width: 380px) {
+    .calendar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .time-unit {
+        min-width: 45px;
+    }
+}
