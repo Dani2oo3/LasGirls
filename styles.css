@@ -1,13 +1,22 @@
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
 :root {
-    --pink: #e9aab9;
-    --pink-dark: #c87891;
-    --pink-light: #f8e9ed;
-    --cream: #fffaf7;
-    --text: #493b40;
-    --muted: #927e84;
+    --pink: #b9a47b;
+    --pink-dark: #8b2635;
+    --pink-light: #e9dfc9;
+    --cream: #faf7ef;
+    --text: #303d32;
+    --muted: #827d70;
     --white: #ffffff;
-    --shadow: 0 12px 35px rgba(113, 65, 81, 0.10);
+
+    --green: #244b38;
+    --green-dark: #183729;
+    --green-light: #e5ecdf;
+    --gold: #bd9a59;
+    --red: #8b2635;
+
+    --shadow: 0 12px 35px rgba(39, 57, 43, 0.10);
 }
 
 * {
@@ -20,8 +29,8 @@ body {
     font-family: "DM Sans", sans-serif;
     color: var(--text);
     background:
-        radial-gradient(circle at 10% 10%, #fbe9ed 0, transparent 28%),
-        radial-gradient(circle at 90% 35%, #f8e8e0 0, transparent 25%),
+        radial-gradient(circle at 10% 10%, #e9eddf 0, transparent 28%),
+        radial-gradient(circle at 90% 35%, #f1e8d6 0, transparent 25%),
         var(--cream);
     min-height: 100vh;
 }
@@ -29,6 +38,8 @@ body {
 button {
     font: inherit;
 }
+
+/* PORTADA */
 
 .hero {
     text-align: center;
@@ -38,7 +49,7 @@ button {
 }
 
 .eyebrow {
-    color: var(--pink-dark);
+    color: var(--red);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 3px;
@@ -50,16 +61,18 @@ button {
     font-weight: 600;
     margin: 15px 0;
     letter-spacing: -3px;
+    color: var(--green-dark);
 }
 
 .hero h1 span {
-    color: var(--pink-dark);
+    color: var(--red);
 }
 
 .subtitle {
     font-size: clamp(1rem, 3vw, 1.3rem);
     font-weight: 600;
     margin-bottom: 18px;
+    color: var(--green);
 }
 
 .intro {
@@ -72,9 +85,11 @@ button {
 
 .hero-decoration {
     margin-top: 30px;
-    color: var(--pink-dark);
-    font-size: 1.2rem;
+    color: var(--gold);
+    font-size: 1.3rem;
 }
+
+/* CALENDARIO */
 
 .calendar-section {
     max-width: 1050px;
@@ -93,6 +108,7 @@ button {
     font-size: clamp(1.8rem, 5vw, 2.7rem);
     font-weight: 600;
     margin: 12px 0;
+    color: var(--green-dark);
 }
 
 .section-heading p {
@@ -109,9 +125,9 @@ button {
 .day-card {
     position: relative;
     min-height: 150px;
-    border: 1px solid #f0d6dd;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ded5c2;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.85);
     box-shadow: var(--shadow);
     color: var(--text);
     cursor: pointer;
@@ -126,20 +142,20 @@ button {
 
 .day-card:hover:not(:disabled) {
     transform: translateY(-5px);
-    box-shadow: 0 16px 35px rgba(113, 65, 81, 0.17);
+    box-shadow: 0 16px 35px rgba(39, 57, 43, 0.17);
 }
 
 .day-card:focus-visible,
 .preview-button:focus-visible,
 .close-modal:focus-visible {
-    outline: 3px solid var(--pink-dark);
+    outline: 3px solid var(--gold);
     outline-offset: 4px;
 }
 
 .day-number {
     font-family: "Playfair Display", serif;
     font-size: 2.8rem;
-    color: var(--pink-dark);
+    color: var(--green);
 }
 
 .day-label {
@@ -147,6 +163,7 @@ button {
     letter-spacing: 1px;
     font-weight: 700;
     text-transform: uppercase;
+    color: var(--muted);
 }
 
 .day-icon {
@@ -154,31 +171,39 @@ button {
 }
 
 .day-card.locked {
-    background: #f7eef0;
+    background: #e9e9df;
     cursor: not-allowed;
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
 .day-card.locked .day-number {
-    color: #bda7ad;
+    color: #9a9b8d;
 }
 
 .day-card.available {
-    background: linear-gradient(145deg, #fff, #fbe9ed);
+    background: linear-gradient(145deg, #fffdf7, #e8eddf);
+    border-color: #c4cbb8;
+}
+
+.day-card.available .day-number {
+    color: var(--red);
 }
 
 .day-card.opened {
-    border: 2px solid var(--pink);
+    border: 2px solid var(--gold);
+    background: linear-gradient(145deg, #fffdf7, #f1eadb);
 }
 
 .day-card.opened::after {
-    content: "♡";
+    content: "✦";
     position: absolute;
     top: 8px;
     right: 12px;
-    color: var(--pink-dark);
-    font-size: 1rem;
+    color: var(--gold);
+    font-size: 1.1rem;
 }
+
+/* MENSAJE DEL CALENDARIO */
 
 .calendar-message {
     text-align: center;
@@ -187,6 +212,8 @@ button {
     min-height: 24px;
     font-size: 0.9rem;
 }
+
+/* CUENTA ATRÁS */
 
 .countdown-section {
     padding: 20px 22px 75px;
@@ -197,9 +224,9 @@ button {
     margin: auto;
     padding: 45px 25px;
     text-align: center;
-    background: linear-gradient(135deg, #f9e6eb, #fff3ed);
-    border: 1px solid #f0d6dd;
-    border-radius: 28px;
+    background: linear-gradient(135deg, #e6ecdf, #f5eddf);
+    border: 1px solid #d7d8c7;
+    border-radius: 24px;
     box-shadow: var(--shadow);
 }
 
@@ -225,7 +252,7 @@ button {
 .time-unit strong {
     font-family: "Playfair Display", serif;
     font-size: clamp(2rem, 7vw, 3.4rem);
-    color: var(--pink-dark);
+    color: var(--red);
     font-weight: 600;
     font-variant-numeric: tabular-nums;
 }
@@ -238,9 +265,11 @@ button {
 }
 
 .countdown-card .countdown-footer {
-    color: var(--pink-dark);
+    color: var(--green);
     font-weight: 600;
 }
+
+/* BOTÓN DE VISTA PREVIA */
 
 .preview-section {
     text-align: center;
@@ -251,7 +280,7 @@ button {
     border: none;
     border-radius: 30px;
     padding: 13px 25px;
-    background: var(--pink-dark);
+    background: var(--green);
     color: white;
     font-weight: 700;
     cursor: pointer;
@@ -259,7 +288,7 @@ button {
 }
 
 .preview-button:hover {
-    background: #b96882;
+    background: var(--red);
     transform: translateY(-2px);
 }
 
@@ -269,10 +298,12 @@ button {
     color: var(--muted);
 }
 
+/* PIE DE PÁGINA */
+
 footer {
     text-align: center;
     padding: 30px 15px;
-    border-top: 1px solid #f0dce1;
+    border-top: 1px solid #ded8c9;
     color: var(--muted);
 }
 
@@ -280,6 +311,7 @@ footer p {
     font-family: "Playfair Display", serif;
     font-size: 1.1rem;
     margin-bottom: 8px;
+    color: var(--green);
 }
 
 footer span {
@@ -287,7 +319,7 @@ footer span {
     letter-spacing: 2px;
 }
 
-/* Ventana emergente */
+/* VENTANA EMERGENTE */
 
 .modal {
     position: fixed;
@@ -306,7 +338,7 @@ footer span {
 .modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(49, 34, 40, 0.65);
+    background: rgba(24, 39, 29, 0.72);
     backdrop-filter: blur(5px);
 }
 
@@ -317,7 +349,8 @@ footer span {
     max-height: 90vh;
     overflow-y: auto;
     background: var(--cream);
-    border-radius: 24px;
+    border: 1px solid #ded5c2;
+    border-radius: 20px;
     padding: 38px 30px 30px;
     text-align: center;
     box-shadow: 0 20px 70px rgba(0, 0, 0, 0.2);
@@ -347,7 +380,7 @@ footer span {
 }
 
 .modal-day {
-    color: var(--pink-dark);
+    color: var(--red);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 2px;
@@ -357,7 +390,10 @@ footer span {
     font-family: "Playfair Display", serif;
     font-size: 2rem;
     margin: 10px 0 20px;
+    color: var(--green-dark);
 }
+
+/* FOTOGRAFÍAS */
 
 .modal-images {
     display: grid;
@@ -370,8 +406,11 @@ footer span {
     width: 100%;
     max-height: 350px;
     object-fit: contain;
-    border-radius: 14px;
-    background: #f5e9e9;
+    border: 7px solid white;
+    border-bottom: 18px solid white;
+    border-radius: 3px;
+    background: #eee9dc;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
 }
 
 .modal-images.single-image {
@@ -380,6 +419,8 @@ footer span {
 
 .modal-images.single-image img {
     max-height: 420px;
+    width: min(100%, 430px);
+    margin: auto;
 }
 
 .modal-comment {
@@ -391,10 +432,12 @@ footer span {
 
 .modal-heart {
     display: inline-block;
-    color: var(--pink-dark);
-    font-size: 1.6rem;
+    color: var(--gold);
+    font-size: 1.5rem;
     margin-top: 17px;
 }
+
+/* RESPONSIVE: MÓVILES */
 
 @media (max-width: 650px) {
     .hero {

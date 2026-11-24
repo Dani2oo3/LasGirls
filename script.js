@@ -298,7 +298,7 @@ function updateCalendarMessage() {
                 `¡Ya puedes abrir hasta el día ${today.day}! Mañana habrá una nueva sorpresa.`;
         } else {
             calendarMessage.textContent =
-                "¡Has llegado al final del calendario! Feliz Navidad. ♡";
+                "¡Habeis llegado al final del calendario! Feliz Navidad. ";
         }
         return;
     }
@@ -399,7 +399,7 @@ function updateCountdown() {
 
     if (!target) {
         title.textContent = "¡Calendario completado!";
-        description.textContent = "Los 24 recuerdos ya están disponibles. ♡";
+        description.textContent = "Los 24 recuerdos ya están disponibles. ";
 
         daysElement.textContent = "00";
         hoursElement.textContent = "00";
